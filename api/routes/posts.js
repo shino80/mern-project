@@ -4,7 +4,7 @@ const User = require("../models/User");
 // CREATE NEW POST
 const bcrypt = require("bcrypt");
 router.post("/", async (req, res) => {
-  const newPost =  new Post(req.body);
+  const newPost = new Post(req.body);
   try {
     const savedPost = await newPost.save();
     res.status(200).json(savedPost);
@@ -15,39 +15,83 @@ router.post("/", async (req, res) => {
 
 // UPDATE POST
 
-// DELETE POST
+router.put("/:id", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (post.username === req.body.username) {
+      try {
+        const updatedPost = await Post.findByIdAndUpdate(
+          req.params.id,
+          {
+            $set: req.body,
+          },
+          {
+            new: true,
+          }
+        );
+        res.status(200).json(updatedPost);
+      } catch (error) {
+        res.status(500).json(error);
+      }
+    } else {
+      res.status(401).json("You can update only your post !");
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
-// router.delete("/:id", async (req, res) => {
-//   if (req.body.userId === req.params.id) {
-//     try {
-//       const user = await User.findById(req.params.id);
-//       if (user) {
-//         try {
-//           await Post.deleteMany({ username: user.username });
-//           await User.findByIdAndDelete(req.params.id);
-//           res.status(200).json("User deleted successfully!");
-//         } catch (err) {
-//           res.status(500).json("Error deleting user");
-//         }
-//       } else {
-//         res.status(404).json("User not found");
-//       }
-//     } catch (error) {
-//       res.status(500).json("An error occurred");
-//     }
-//   } else {
-//     res.status(401).json("You can delete only your account ! ");
-//   }
-// });
-// // GET POST
-// router.get("/:id", async (req, res) => {
-//   try {
-//     const user = await User.findById(req.params.id);
-//     const { password, ...others } = user._doc;
-//     res.status(200).json(others);
-//   } catch (error) {
-//     res.status(500).json(error);
-//   }
-// });
+// DELETE POST
+router.delete("/:id", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (post.username === req.body.username) {
+      try {
+        await post.deleteOne();
+        res.status(200).json("Delete success!");
+      } catch (error) {
+        res.status(500).json(error);
+      }
+    } else {
+      res.status(401).json("You can delete only your post !");
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+// GET POST
+router.get("/:id", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// GET ALL POSTS
+router.get("/", async (req, res) => {
+  const userName = req.query.user;
+  const catName = req.query.cat;
+  try {
+    let posts;
+    if (userName) {
+      posts = await Post.find({ username: userName });
+    } else if (catName) {
+      posts = await Post.find({
+        categories: {
+          $in: [catName],
+        },
+      });
+    } else {
+      posts = await Post.find();
+    }
+
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 module.exports = router;

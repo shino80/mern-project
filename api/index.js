@@ -3,6 +3,7 @@ const app = express();
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
+const postCat = require("./routes/categories");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 app.use(express.json());
@@ -22,6 +23,7 @@ mongoose
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
+app.use("/api/categories", postCat);
 app.listen("3000", () => {
   console.log("Be is running ! ");
 });
