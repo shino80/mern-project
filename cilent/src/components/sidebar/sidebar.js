@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./sidebar.css";
 import { AiFillFacebook, AiFillGithub, AiFillInstagram } from "react-icons/ai";
+import axios from "axios";
 export const SideBar = () => {
+  const [cats, setCats] = useState([]);
+
+  useEffect(() => {
+    const getCats = async () => {
+      const res = await axios.get("/categories");
+      console.log(res.data);
+      setCats(res.data);
+    };
+    getCats();
+  }, []);
+
   return (
     <div className="side-bar">
       <div className="sidebar-item">
@@ -16,11 +28,9 @@ export const SideBar = () => {
       <div className="sidebar-item">
         <div className="sidebar-title"> Categories</div>
         <ul className="sidebar-list">
-          <li className="sidebar-list-item">Life</li>
-          <li className="sidebar-list-item">Music</li>
-          <li className="sidebar-list-item">Sport</li>
-          <li className="sidebar-list-item">Cinema</li>
-          <li className="sidebar-list-item">Tech</li>
+          {cats.map((cat) => (
+            <li className="sidebar-list-item">{cat.name}</li>
+          ))}
         </ul>
       </div>
       <div className="sidebar-item">

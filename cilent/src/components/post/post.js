@@ -1,28 +1,32 @@
 import React from "react";
 import "./post.css";
-export const Post = () => {
+import { Link } from "react-router-dom";
+export const Post = ({ post }) => {
   return (
     <div className="post">
+      {post.photo && <img className="post-img" src={post.photo} alt="" />}
       <img
         className="post-img"
-        src="https://images.unsplash.com/photo-1682687220640-9d3b11ca30e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw4NXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+        src="https://images.unsplash.com/photo-1687360441372-757f8b2b6835?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
         alt=""
       />
       <div className="post-info">
         <div className="post-cats">
-          <span className="post-cat">Music</span>
-          <span className="post-cat">Life</span>
+          {post.categories.map((cat) => (
+            <span className="post-cat">{cat.name}</span>
+          ))}
         </div>
-        <span className="post-title">The error message you're seeing.</span>
+        <Link className="link" to={`/post/${post._id}`}>
+          {" "}
+          <span className="post-title">{post.title}</span>
+        </Link>
+
         <hr />
-        <span className="post-date">1 hour ago</span>
+        <span className="post-date">
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
-      <p className="post-desc">
-        The error message you're seeing, 'FontAwesomeIcon' is not defined, is a
-        common error in React applications that use JSX. This error occurs when
-        you're trying to use a component, in this case, FontAwesomeIcon, without
-        properly importing or defining it.
-      </p>
+      <p className="post-desc">{post.desc}</p>
     </div>
   );
 };

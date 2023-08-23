@@ -39,6 +39,6 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", postCat);
-app.listen("3000", () => {
+app.listen("8000", () => {
   console.log("Be is running ! ");
 });
