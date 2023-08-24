@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./topbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   AiFillFacebook,
   AiFillGithub,
   AiFillInstagram,
   AiOutlineSearch,
 } from "react-icons/ai";
+import { Context } from "../../context/Context";
 
 export const TopBar = () => {
-  const user = false;
+  const navigate =useNavigate();
+  const { user, dispatch } = useContext(Context);
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate('/')
+  };
   return (
     <div className="top">
       <div className="top-left">
@@ -34,32 +40,29 @@ export const TopBar = () => {
             {" "}
             <li className="top-list-item">Write</li>{" "}
           </Link>
-          <li className="top-list-item">{user && "Log Out"}</li>
+          <li className="top-list-item" onClick={handleLogout}>
+            {user && "Log Out"}
+          </li>
         </ul>
       </div>
       <div className="top-right">
         {user ? (
           <>
-            <img
-              className="top-img"
-              src="https://images.unsplash.com/photo-1692653941602-04818c47f13a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-              alt="photo"
-            />
-          
+            <img className="top-img" src={user.profilePic} alt="photo" />
           </>
         ) : (
           <>
-          <ul className="top-list">
-          <li className="top-list-item">
-            <Link className="link" to="/login">
-              Login
-            </Link>
-            </li>
-            <li className="top-list-item">
-            <Link className="link" to="/register">
-              Register
-            </Link>
-            </li>
+            <ul className="top-list">
+              <li className="top-list-item">
+                <Link className="link" to="/login">
+                  Login
+                </Link>
+              </li>
+              <li className="top-list-item">
+                <Link className="link" to="/register">
+                  Register
+                </Link>
+              </li>
             </ul>
           </>
         )}

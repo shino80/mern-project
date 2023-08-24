@@ -2,14 +2,19 @@ import React from "react";
 import "./post.css";
 import { Link } from "react-router-dom";
 export const Post = ({ post }) => {
+  const PF = 'http://localhost:8000/images/'
   return (
     <div className="post">
-      {post.photo && <img className="post-img" src={post.photo} alt="" />}
-      <img
-        className="post-img"
-        src="https://images.unsplash.com/photo-1687360441372-757f8b2b6835?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-        alt=""
-      />
+      {post.photo ? (
+        <img className="post-img" src={ PF + post.photo} alt="" />
+      ) : (
+        <img
+          className="post-img"
+          src="https://plus.unsplash.com/premium_photo-1690487578018-c2bffcc1aca0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzNHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+          alt=""
+        />
+      )}
+
       <div className="post-info">
         <div className="post-cats">
           {post.categories.map((cat) => (

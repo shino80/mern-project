@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./sidebar.css";
 import { AiFillFacebook, AiFillGithub, AiFillInstagram } from "react-icons/ai";
 import axios from "axios";
+import { Link } from "react-router-dom";
 export const SideBar = () => {
   const [cats, setCats] = useState([]);
 
@@ -29,7 +30,9 @@ export const SideBar = () => {
         <div className="sidebar-title"> Categories</div>
         <ul className="sidebar-list">
           {cats.map((cat) => (
-            <li className="sidebar-list-item">{cat.name}</li>
+            <Link to={`/?cat=${cat.name}`} className="link">
+              <li className="sidebar-list-item">{cat.name}</li>
+            </Link>
           ))}
         </ul>
       </div>
