@@ -10,12 +10,14 @@ import {
 import { Context } from "../../context/Context";
 
 export const TopBar = () => {
-  const navigate =useNavigate();
+  const PF = 'http://localhost:8000/images/'
+  const navigate = useNavigate();
   const { user, dispatch } = useContext(Context);
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
-    navigate('/')
+    navigate("/");
   };
+
   return (
     <div className="top">
       <div className="top-left">
@@ -48,7 +50,9 @@ export const TopBar = () => {
       <div className="top-right">
         {user ? (
           <>
-            <img className="top-img" src={user.profilePic} alt="photo" />
+            <Link to='/setting'>
+              <img className="top-img" src={PF + user.profilePic} alt="photo" />
+            </Link>
           </>
         ) : (
           <>

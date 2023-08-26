@@ -12,10 +12,15 @@ export const SinglePost = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [singlePost, setSinglePost] = useState({});
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [updateMode, setupdateMode] = useState(false);
   useEffect(() => {
     const getPost = async () => {
       const res = await axios.get(`/posts/${path}`);
       setSinglePost(res.data);
+      setTitle(res.data.title);
+      setDesc(res.data.desc);
     };
     getPost();
   }, [path]);
@@ -30,7 +35,18 @@ export const SinglePost = () => {
       // You can display an error message to the user here
     }
   };
-
+  const handleUpdate = async () => {
+    try {
+      await axios.put(`/posts/${singlePost._id}`, {
+        username: user.username,
+        title,
+        desc,
+      });
+    setupdateMode(false)
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="single-post">
@@ -38,23 +54,32 @@ export const SinglePost = () => {
         {singlePost.photo && (
           <img className="single-post-img" src={PF + singlePost.photo} alt="" />
         )}
-        <img
-          className="https://images.unsplash.com/photo-1682685797332-e678a04f8a64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-          src={singlePost.photo}
-          alt=""
-        />
-        <h1 className="single-post-title">
-          {singlePost.title}
-          {singlePost.username === user?.username && (
-            <div className="single-post-edit">
-              <AiFillEdit className="single-post-icon" />
-              <AiOutlineDelete
-                className="single-post-icon"
-                onClick={handleDelete}
-              />
-            </div>
-          )}
-        </h1>
+        {updateMode ? (
+          <input
+            type="text"
+            value={title}
+            className="single-post-title-input"
+            onChange={(e) => setTitle(e.target.value)}
+            autoFocus
+          />
+        ) : (
+          <h1 className="single-post-title">
+            {singlePost.title}
+            {singlePost.username === user?.username && (
+              <div className="single-post-edit">
+                <AiFillEdit
+                  className="single-post-icon"
+                  onClick={() => setupdateMode(true)}
+                />
+                <AiOutlineDelete
+                  className="single-post-icon"
+                  onClick={handleDelete}
+                />
+              </div>
+            )}
+          </h1>
+        )}
+
         <div className="single-post-info">
           <span className="single-post-author">
             Author:{" "}
@@ -66,7 +91,20 @@ export const SinglePost = () => {
             {new Date(singlePost.createdAt).toDateString()}
           </span>
         </div>
-        <p className="single-post-desc">{singlePost.desc}</p>
+        {updateMode ? (
+          <textarea
+            className="desc-input"
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+          />
+        ) : (
+          <p className="single-post-desc">{singlePost.desc}</p>
+        )}
+        {updateMode && (
+          <button className="single-post-button" onClick={handleUpdate}>
+            Update
+          </button>
+        )}
       </div>
     </div>
   );
