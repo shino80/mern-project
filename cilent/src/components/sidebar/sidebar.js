@@ -18,16 +18,16 @@ export const SideBar = () => {
   return (
     <div className="side-bar">
       <div className="sidebar-item">
-        <span className="sidebar-title">About me </span>
+        <span className="sidebar-title">僕のこと</span>
         <img
           className="sidebar-img"
-          src="https://images.unsplash.com/photo-1691580438246-a6e5cb35ca05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyOHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+          src="https://scontent-nrt1-2.xx.fbcdn.net/v/t39.30808-6/317887204_1471504000040020_7351981800870923716_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=lqVbwPOwa_kAX8CQRdj&_nc_ht=scontent-nrt1-2.xx&oh=00_AfCrR1RUjqIjiBsyoXV0G4CXAz-WTsuiO-6L0JEV7uuSzQ&oe=64EF58BF"
           alt=""
         />
-        <p>lorem-ipsum.paragraph</p>
+        <p>Will Nguyen</p>
       </div>
       <div className="sidebar-item">
-        <div className="sidebar-title"> Categories</div>
+        <div className="sidebar-title"> カテゴリー</div>
         <ul className="sidebar-list">
           {cats.map((cat) => (
             <Link to={`/?cat=${cat.name}`} className="link">
@@ -37,11 +37,11 @@ export const SideBar = () => {
         </ul>
       </div>
       <div className="sidebar-item">
-        <span className="sidebar-title">Follow us </span>
+        <span className="sidebar-title">フォローしてください</span>
         <div className="sidebar-social">
-          <AiFillFacebook className="sidebar-icon" />
-          <AiFillGithub className="sidebar-icon" />
-          <AiFillInstagram className="sidebar-icon" />
+          <AiFillFacebook className="sidebar-icon"  href="https://www.facebook.com/profile.php?id=100015413019978"/>
+          <AiFillGithub className="sidebar-icon"  href="https://github.com/shino80"/>
+          <AiFillInstagram className="sidebar-icon"  href="https://www.instagram.com/" />
         </div>
       </div>
     </div>

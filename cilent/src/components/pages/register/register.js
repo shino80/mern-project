@@ -25,41 +25,41 @@ export const Register = () => {
 
   return (
     <div className="register">
-      <span className="register-title">Register</span>
+      <span className="register-title">新規登録</span>
       <form className="register-form" onSubmit={handleSubmit}>
-        <label>User Name</label>
+        <label>ユーザー名</label>
         <input
           className="register-input"
           type="text"
-          placeholder="Enter your name ...."
+          placeholder="ユーザー名"
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-        <label>Email</label>
+        <label>メール</label>
         <input
           className="register-input"
           type="text"
-          placeholder="Enter your email ...."
+          placeholder="メール"
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <label>Password</label>
+        <label>パスワード</label>
         <input
           className="register-input"
           type="password"
-          placeholder="Enter your password ...."
+          placeholder="パスワード"
           onChange={(e) => setPassword(e.target.value)}
           required
         />
         <button type="submit" className="register-but">
-          Register
+         会員登録
         </button>
       </form>
       <Link to="/login">
         {" "}
-        <button className="login-but">Login</button>
+        <button className="login-but">ログイン</button>
       </Link>
-      {err && <span className="err">Some thing wrong !</span>}
+      {err && <span className="err">ユーザー名またはパスワードが間違っています !</span>}
     </div>
   );
 };

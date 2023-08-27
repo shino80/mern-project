@@ -25,31 +25,31 @@ export const Login = () => {
 
   return (
     <div className="login">
-      <span className="login-title">Login</span>
+      <span className="login-title">ログイン</span>
       <form className="login-form" onSubmit={handleSubmit}>
-        <label>User name</label>
+        <label>ユーザー名</label>
         <input
           className="login-input"
           type="text"
-          placeholder="Enter your username...."
+          placeholder="ユーザー名"
           ref={userRef}
           required
         />
-        <label>Password</label>
+        <label>パスワード</label>
         <input
           className="login-input"
           type="password"
-          placeholder="Enter your password ...."
+          placeholder="パスワード"
           ref={passwordRef}
           required
         />
         <button type="submit" className="login-button" disabled={isFetching}>
-          Login
+        ログイン
         </button>
       </form>
       <Link to="/register">
         {" "}
-        <button className="register-button">Register</button>
+        <button className="register-button">新規登録</button>
       </Link>
     </div>
   );

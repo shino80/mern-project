@@ -82,7 +82,7 @@ export const SinglePost = () => {
 
         <div className="single-post-info">
           <span className="single-post-author">
-            Author:{" "}
+          作者：{" "}
             <Link to={`/?user=${singlePost.username}`} className="link">
               <b>{singlePost.username}</b>
             </Link>
@@ -102,7 +102,8 @@ export const SinglePost = () => {
         )}
         {updateMode && (
           <button className="single-post-button" onClick={handleUpdate}>
-            Update
+           更新
+           
           </button>
         )}
       </div>

@@ -51,6 +51,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .sidebar-icon{
     font-size: 30px;

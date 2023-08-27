@@ -42,11 +42,11 @@ export const Setting = () => {
     <div className="setting">
       <div className="setting-wrapper">
         <div className="setting-title">
-          <span className="setting-update-title">Update your account</span>
-          <span className="setting-delete-title">Delete your account</span>
+          <span className="setting-update-title">アカウントを更新</span>
+          <span className="setting-delete-title">アカウントを削除</span>
         </div>
         <form className="setting-form" onSubmit={handleSubmit}>
-          <label>Proflie Picture</label>
+          <label>プロフィールの写真</label>
           <div className="setting-pp">
             <img
               className="setting-img"
@@ -65,26 +65,26 @@ export const Setting = () => {
               setFile(e.target.files[0]);
             }}
           />
-          <label> User Name</label>
+          <label> ユーザー名</label>
           <input
             type="text"
             placeholder={user.username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <label>Email</label>
+          <label>メール</label>
           <input
             type="email"
             placeholder={user.email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label>Password</label>
+          <label>パスワード</label>
           <input
             type="password"
             placeholder=""
             onChange={(e) => setPassword(e.target.value)}
           />
           <button type="submit" className="setting-button">
-            Update
+          更新
           </button>
           {success && (
             <span
@@ -95,7 +95,7 @@ export const Setting = () => {
                 fontSize: "20px",
               }}
             >
-              Update success !
+            アップデート成功
             </span>
           )}
         </form>

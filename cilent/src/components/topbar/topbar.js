@@ -28,22 +28,22 @@ export const TopBar = () => {
       <div className="top-center">
         <ul className="top-list">
           <Link className="link" to="/">
-            <li className="top-list-item">Home </li>
+            <li className="top-list-item">ホーム</li>
           </Link>
           <Link className="link" to="/about">
             {" "}
-            <li className="top-list-item">About</li>
+            <li className="top-list-item">概要</li>
           </Link>
           <Link className="link" to="/contact">
             {" "}
-            <li className="top-list-item">Contact</li>
+            <li className="top-list-item">問い合わせ</li>
           </Link>
           <Link className="link" to="/write">
             {" "}
-            <li className="top-list-item">Write</li>{" "}
+            <li className="top-list-item">ブログ投稿</li>{" "}
           </Link>
           <li className="top-list-item" onClick={handleLogout}>
-            {user && "Log Out"}
+            {user && "ログアウト"}
           </li>
         </ul>
       </div>
@@ -59,12 +59,12 @@ export const TopBar = () => {
             <ul className="top-list">
               <li className="top-list-item">
                 <Link className="link" to="/login">
-                  Login
+                ログイン
                 </Link>
               </li>
               <li className="top-list-item">
                 <Link className="link" to="/register">
-                  Register
+                 新規登録
                 </Link>
               </li>
             </ul>

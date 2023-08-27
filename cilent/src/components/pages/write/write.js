@@ -48,7 +48,7 @@ export const Write = () => {
           />
           <input
             type="text"
-            placeholder="Title"
+            placeholder="タイトル"
             className="write-input"
             onChange={e=>setTitle(e.target.value)}
             autoFocus={true}
@@ -56,14 +56,14 @@ export const Write = () => {
         </div>
         <div className="write-form-group">
           <textarea
-            placeholder="Tell your story"
+            placeholder="あなたの物語を教えてください"
             type="text"
             className="write-input write-text"
             onChange={e=>setDesc(e.target.value)}
           ></textarea>
         </div>
         <button type="submit" className="write-submit">
-          Publish
+        公開
         </button>
       </form>
     </div>
