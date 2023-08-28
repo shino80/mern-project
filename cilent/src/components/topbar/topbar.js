@@ -10,7 +10,7 @@ import {
 import { Context } from "../../context/Context";
 
 export const TopBar = () => {
-  const PF = 'http://localhost:8000/images/'
+  const PF = "http://localhost:8000/images/";
   const navigate = useNavigate();
   const { user, dispatch } = useContext(Context);
   const handleLogout = () => {
@@ -38,10 +38,12 @@ export const TopBar = () => {
             {" "}
             <li className="top-list-item">問い合わせ</li>
           </Link>
-          <Link className="link" to="/write">
-            {" "}
-            <li className="top-list-item">ブログ投稿</li>{" "}
-          </Link>
+          {user ? (
+            <Link className="link" to="/write">
+              {" "}
+              <li className="top-list-item">ブログ投稿</li>{" "}
+            </Link>
+          ) : null}
           <li className="top-list-item" onClick={handleLogout}>
             {user && "ログアウト"}
           </li>
@@ -50,7 +52,7 @@ export const TopBar = () => {
       <div className="top-right">
         {user ? (
           <>
-            <Link to='/setting'>
+            <Link to="/setting">
               <img className="top-img" src={PF + user.profilePic} alt="photo" />
             </Link>
           </>
@@ -59,12 +61,12 @@ export const TopBar = () => {
             <ul className="top-list">
               <li className="top-list-item">
                 <Link className="link" to="/login">
-                ログイン
+                  ログイン
                 </Link>
               </li>
               <li className="top-list-item">
                 <Link className="link" to="/register">
-                 新規登録
+                  新規登録
                 </Link>
               </li>
             </ul>

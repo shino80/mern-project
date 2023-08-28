@@ -1,13 +1,14 @@
-import React, { useContext, useRef} from "react";
+import React, { useContext, useRef, useState } from "react";
 import "./login.css";
-import { Link ,useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../../context/Context";
 import axios from "axios";
 export const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const userRef = useRef();
   const passwordRef = useRef();
   const { dispatch, isFetching } = useContext(Context);
+  const [err, setErrMsg] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
@@ -17,9 +18,19 @@ export const Login = () => {
         password: passwordRef.current.value,
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      navigate('/')
+      navigate("/");
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE" });
+      console.log(error);
+      if (!error?.response) {
+        setErrMsg("サーバー応答なし　!");
+      } else if (error.response?.status === 400) {
+        setErrMsg("ユーザー名またはパスワードが間違っています !");
+      } else if (error.response?.status === 401) {
+        setErrMsg("無許可　!");
+      } else {
+        setErrMsg("ログインに失敗　!");
+      }
     }
   };
 
@@ -44,9 +55,11 @@ export const Login = () => {
           required
         />
         <button type="submit" className="login-button" disabled={isFetching}>
-        ログイン
+          ログイン
         </button>
+     
       </form>
+      <p className={err ? "errmsg" : "offscreen"}>{err}</p>
       <Link to="/register">
         {" "}
         <button className="register-button">新規登録</button>

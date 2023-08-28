@@ -6,7 +6,7 @@ export const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErr(false);
@@ -17,9 +17,16 @@ export const Register = () => {
         password,
       });
       res.data && window.location.replace("/login");
-    } catch (error) {
-      console.log(error);
-      setErr(true);
+    } catch (err) {
+      console.log(err);
+
+      if (!err?.response) {
+        setErr("サーバー応答なし");
+      } else if (err.response?.status === 409) {
+        setErr("ユーザー名が取得できません");
+      } else {
+        setErr("登録に失敗");
+      }
     }
   };
 
@@ -52,14 +59,14 @@ export const Register = () => {
           required
         />
         <button type="submit" className="register-but">
-         会員登録
+          会員登録
         </button>
       </form>
       <Link to="/login">
         {" "}
         <button className="login-but">ログイン</button>
       </Link>
-      {err && <span className="err">ユーザー名またはパスワードが間違っています !</span>}
+      <span className={err ? "errmsg" : "offscreen"}>{err}</span>
     </div>
   );
 };

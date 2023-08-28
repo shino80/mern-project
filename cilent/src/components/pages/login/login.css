@@ -51,3 +51,11 @@
     cursor: not-allowed;
     background-color: rgb(210, 104, 104);
 }
+.errmsg{
+margin-top: 10px;
+ color: red;
+   
+}
+.offscreen{
+    display: block;
+}
