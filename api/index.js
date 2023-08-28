@@ -8,13 +8,23 @@ const dotenv = require("dotenv");
 const multer = require("multer");
 const mongoose = require("mongoose");
 const path = require("path");
+const cors = require("cors");
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
+
+// deploy link
+
+// app.use(
+//   cors({
+//     origin: ["http://localhost:8000", "http://goraku.onrender.com"],
+//   })
+// );
+
 dotenv.config();
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
   .then(() => {
     console.log("Connected to MongoDB");
