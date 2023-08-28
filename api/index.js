@@ -51,6 +51,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", postCat);
-app.listen("8000", () => {
-  console.log("Be is running ! ");
+const PORT = process.env.PORT
+app.listen(PORT, () => {
+  console.log("Be is running " + PORT);
 });
