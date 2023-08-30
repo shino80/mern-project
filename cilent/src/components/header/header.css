@@ -26,3 +26,19 @@
   margin-top: 80px;
   object-fit: cover;
 }
+
+@media only screen and (min-width: 1600px) {
+  .header-titlesm {
+    position: absolute;
+    top: 45%;
+    font-size: 30px;
+    font-family: 'Pacifico', cursive;
+    
+  }
+  .header-titlelg {
+    position: absolute;
+    top: 20%;
+    font-size: 150px;
+    font-family: 'Pacifico', cursive;
+  }
+}
