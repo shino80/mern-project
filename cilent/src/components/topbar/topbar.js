@@ -10,7 +10,7 @@ import {
 import { Context } from "../../context/Context";
 
 export const TopBar = () => {
-  const PF = "http://localhost:8000/images/";
+  const PF = "https://goraku-blog.onrender.com/images/";
   const navigate = useNavigate();
   const { user, dispatch } = useContext(Context);
   const handleLogout = () => {

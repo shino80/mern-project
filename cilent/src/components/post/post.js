@@ -2,7 +2,7 @@ import React from "react";
 import "./post.css";
 import { Link } from "react-router-dom";
 export const Post = ({ post }) => {
-  const PF = 'http://localhost:8000/images/'
+  const PF = 'https://goraku-blog.onrender.com/images/'
   return (
     <div className="post">
       {post.photo ? (

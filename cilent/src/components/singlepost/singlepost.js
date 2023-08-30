@@ -7,7 +7,7 @@ import axios from "../../api/axios";
 import { Context } from "../../context/Context";
 
 export const SinglePost = () => {
-  const PF = "http://localhost:8000/images/";
+  const PF = "https://goraku-blog.onrender.com/images/";
   const navigate = useNavigate();
   const { user } = useContext(Context);
   const location = useLocation();
