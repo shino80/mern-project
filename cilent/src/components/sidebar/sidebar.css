@@ -57,3 +57,10 @@
     font-size: 30px;
     margin-left: 15px;
 }
+.about-me{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  align-items: center;
+}

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   AiFillFacebook,
   AiFillGithub,
-  AiFillInstagram,
+  AiFillLinkedin,
   AiOutlineSearch,
 } from "react-icons/ai";
 import { Context } from "../../context/Context";
@@ -21,9 +21,15 @@ export const TopBar = () => {
   return (
     <div className="top">
       <div className="top-left">
-        <AiFillFacebook className="top-icon" />
-        <AiFillGithub className="top-icon" />
-        <AiFillInstagram className="top-icon" />
+      <a href="https://www.facebook.com/profile.php?id=100015413019978">
+      <AiFillFacebook className="sidebar-icon" />
+    </a>
+    <a href="https://github.com/shino80">
+      <AiFillGithub className="sidebar-icon" />
+    </a>
+    <a href="https://www.linkedin.com/in/hoang-anh-nguyen-9ba389229/">
+      <AiFillLinkedin className="sidebar-icon" />
+    </a>
       </div>
       <div className="top-center">
         <ul className="top-list">
@@ -33,11 +39,11 @@ export const TopBar = () => {
           <Link className="link" to="/about">
             {" "}
             <li className="top-list-item">概要</li>
-          </Link>
-          <Link className="link" to="/contact">
+          </Link> 
+           <Link className="link" to="/contact">
             {" "}
             <li className="top-list-item">問い合わせ</li>
-          </Link>
+          </Link> 
           {user ? (
             <Link className="link" to="/write">
               {" "}
