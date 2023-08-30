@@ -2,7 +2,8 @@ import React, { useContext, useRef, useState } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../../context/Context";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../../api/axios";
 export const Login = () => {
   const navigate = useNavigate();
   const userRef = useRef();

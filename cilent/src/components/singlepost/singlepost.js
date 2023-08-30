@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import "./single-post.css";
 import { AiFillEdit, AiOutlineDelete } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../api/axios";
 import { Context } from "../../context/Context";
 
 export const SinglePost = () => {

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./register.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../../api/axios";
 export const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");

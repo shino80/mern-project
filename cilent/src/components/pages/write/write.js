@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import "./write.css";
 import { AiFillFolderAdd } from "react-icons/ai";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../../api/axios";
 import { Context } from "../../../context/Context";
 export const Write = () => {
   const [title, setTitle] = useState("");

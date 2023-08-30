@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./sidebar.css";
 import { AiFillFacebook, AiFillGithub, AiFillInstagram } from "react-icons/ai";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../api/axios";
 import { Link } from "react-router-dom";
 export const SideBar = () => {
   const [cats, setCats] = useState([]);

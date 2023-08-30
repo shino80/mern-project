@@ -3,7 +3,8 @@ import "./home.css";
 import { Header } from "../../header/header";
 import { Posts } from "../../posts/posts";
 import { SideBar } from "../../sidebar/sidebar";
-import axios from 'axios';
+// import axios from 'axios';
+import axios from "../../../api/axios";
 import { useLocation } from "react-router-dom";
 export const Home = () => {
   const [posts,setPosts] = useState([]);

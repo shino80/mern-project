@@ -3,7 +3,8 @@ import "./setting.css";
 import { SideBar } from "../../sidebar/sidebar";
 import { AiOutlineUser } from "react-icons/ai";
 import { Context } from "../../../context/Context";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../../api/axios";
 export const Setting = () => {
   const PF = 'http://localhost:8000/images/'
   const { user,dispatch} = useContext(Context);
