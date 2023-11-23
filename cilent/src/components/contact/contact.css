@@ -6,6 +6,7 @@
 }
 .contact-img {
   width: 60%;
+  height: 80vh;
   object-fit: cover;
   margin-right: 50px;
   border-radius:10px ;
