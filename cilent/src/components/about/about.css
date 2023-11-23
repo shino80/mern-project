@@ -1,0 +1,22 @@
+.about-container{
+    display: flex;
+   align-items: center;
+   justify-content: center;
+  padding: 20px;
+}
+.img-about{
+width: 50%;
+height: 80vh;
+object-fit: cover;
+border-radius: 10px  ;
+border: solid black;
+margin-right: 50px;
+}
+.h1-text{
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+.about-text,p{
+    font-size: 20px;
+    font-weight: 200;
+}

@@ -26,11 +26,9 @@ export const SideBar = () => {
           alt=""
         />
         <div className="about-me">
-        <p>Will Nguyen </p>
-        <p>Keai University </p>
+          <p>Will Nguyen </p>
+          <p>Keai University </p>
         </div>
-      
-      
       </div>
       {/* <div className="sidebar-item">
         <div className="sidebar-title"> カテゴリー</div>
@@ -43,20 +41,19 @@ export const SideBar = () => {
         </ul>
       </div> */}
       <div className="sidebar-item">
-  <span className="sidebar-title">フォローしてください</span>
-  <div className="sidebar-social">
-    <a href="https://www.facebook.com/profile.php?id=100015413019978">
-      <AiFillFacebook className="sidebar-icon" />
-    </a>
-    <a href="https://github.com/shino80">
-      <AiFillGithub className="sidebar-icon" />
-    </a>
-    <a href="https://www.linkedin.com/in/hoang-anh-nguyen-9ba389229/">
-      <AiFillLinkedin className="sidebar-icon" />
-    </a>
-  </div>
-</div>
-
+        <span className="sidebar-title">フォローしてください</span>
+        <div className="sidebar-social">
+          <a href="https://www.facebook.com/profile.php?id=100015413019978">
+            <AiFillFacebook className="sidebar-icon" />
+          </a>
+          <a href="https://github.com/shino80">
+            <AiFillGithub className="sidebar-icon" />
+          </a>
+          <a href="https://www.linkedin.com/in/hoang-anh-nguyen-9ba389229/">
+            <AiFillLinkedin className="sidebar-icon" />
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
